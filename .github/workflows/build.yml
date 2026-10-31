@@ -1,0 +1,136 @@
+name: Build AutoMail-AI
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build Android APK
+    runs-on: ubuntu-latest
+
+    steps:
+
+      # 1. Checkout repository
+
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      # 2. Set up JDK 17
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      # 3. Set up Android SDK
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v4
+        with:
+          packages: 'platform-tools'
+
+      # 4. Accept Android SDK licences
+
+      - name: Accept Android SDK licenses
+        run: |
+          yes | sdkmanager --licenses > /dev/null || true
+
+      # 5. Install Android SDK platform
+
+      - name: Install Android SDK
+        run: |
+          sdkmanager "platforms;android-37"
+          sdkmanager "platform-tools"
+
+      # 6. Install Gradle directly
+      # No Gradle Wrapper required
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v5
+        with:
+          gradle-version: '9.3.1'
+
+      # 7. Check Gradle installation
+
+      - name: Check Gradle
+        run: |
+          gradle --version
+
+      # 8. Clean project
+
+      - name: Clean
+        run: |
+          gradle -p android clean --no-daemon
+
+      # 9. Build Debug APK
+
+      - name: Build Debug APK
+        run: |
+          gradle -p android assembleDebug --continue --no-daemon --stacktrace
+
+      # 10. Upload build reports if build fails
+
+      - name: Upload Problem Report
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: problem-report
+          path: |
+            android/app/build/reports/
+            android/app/build/outputs/logs/
+          if-no-files-found: ignore
+
+      # 11. Print Kotlin and Gradle errors
+
+      - name: Print Kotlin Errors
+        if: failure()
+        run: |
+          echo "---- FIND REPORTS ----"
+
+          find android -type f -name "*.html" | grep problems || true
+
+          echo "---- CAT PROBLEMS REPORT ----"
+
+          cat android/app/build/reports/problems/problems-report.html 2>&1 | head -n 500 || true
+
+          echo "---- CAT BUILD LOGS ----"
+
+          find android/app/build -name "*.txt" \
+            -exec echo "=== {} ===" \; \
+            -exec cat {} \; 2>&1 | tail -n 1000 || true
+
+      # 12. Verify APK
+
+      - name: Verify APK
+        run: |
+          echo "=== APK output ==="
+
+          ls -lh android/app/build/outputs/apk/debug/
+
+          echo "=== APK file ==="
+
+          test -f android/app/build/outputs/apk/debug/app-debug.apk
+
+          echo "APK successfully generated!"
+
+      # 13. Upload APK
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: AutoMail-AI-debug
+          path: android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+          retention-days: 14
