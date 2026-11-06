@@ -51,7 +51,7 @@ AutoMail-AI/
 Step 1: Clone & Environment Setup
 
 # Clone the repository
-git clone [https://github.com/Coderonaut08spacesci/AutoMail-AI.git](https://github.com/Coderonaut08spacesci/AutoMail-AI.git)
+git clone [https://github.com/Coderonaut/AutoMail-AI.git](https://github.com/Coderonaut/AutoMail-AI.git)
 cd AutoMail-AI
 
 # Initialize virtual environment
