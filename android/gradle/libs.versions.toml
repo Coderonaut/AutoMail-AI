@@ -17,104 +17,57 @@ espresso = "3.7.0"
 
 [plugins]
 
-android-application = {
-    id = "com.android.application",
-    version.ref = "agp"
-}
+android-application = { id = "com.android.application", version.ref = "agp" }
 
-kotlin-compose = {
-    id = "org.jetbrains.kotlin.plugin.compose",
-    version.ref = "kotlin"
-}
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 
 
 [libraries]
 
 # Android Core
 
-androidx-core-ktx = {
-    module = "androidx.core:core-ktx",
-    version.ref = "coreKtx"
-}
+androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }
 
 # Activity Compose
 
-androidx-activity-compose = {
-    module = "androidx.activity:activity-compose",
-    version.ref = "activityCompose"
-}
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
 
 # Compose BOM
 
-androidx-compose-bom = {
-    module = "androidx.compose:compose-bom",
-    version.ref = "composeBom"
-}
+androidx-compose-bom = { module = "androidx.compose:compose-bom", version.ref = "composeBom" }
 
 # Compose UI
 
-androidx-compose-ui = {
-    module = "androidx.compose.ui:ui"
-}
+androidx-compose-ui = { module = "androidx.compose.ui:ui" }
 
-androidx-compose-ui-graphics = {
-    module = "androidx.compose.ui:ui-graphics"
-}
+androidx-compose-ui-graphics = { module = "androidx.compose.ui:ui-graphics" }
 
-androidx-compose-ui-tooling = {
-    module = "androidx.compose.ui:ui-tooling"
-}
+androidx-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
 
-androidx-compose-ui-tooling-preview = {
-    module = "androidx.compose.ui:ui-tooling-preview"
-}
+androidx-compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
 
-androidx-compose-ui-test-junit4 = {
-    module = "androidx.compose.ui:ui-test-junit4"
-}
+androidx-compose-ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4" }
 
-androidx-compose-ui-test-manifest = {
-    module = "androidx.compose.ui:ui-test-manifest"
-}
+androidx-compose-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
 
 # Material 3
 
-androidx-compose-material3 = {
-    module = "androidx.compose.material3"
-}
+androidx-compose-material3 = { module = "androidx.compose.material3" }
 
 # Navigation
 
-androidx-navigation-compose = {
-    module = "androidx.navigation:navigation-compose",
-    version.ref = "navigationCompose"
-}
+androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
 
 # Lifecycle
 
-androidx-lifecycle-runtime-ktx = {
-    module = "androidx.lifecycle:lifecycle-runtime-ktx",
-    version.ref = "lifecycle"
-}
+androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycle" }
 
-androidx-lifecycle-viewmodel-compose = {
-    module = "androidx.lifecycle:lifecycle-viewmodel-compose",
-    version.ref = "lifecycle"
-}
+androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycle" }
 
 # Testing
 
-junit = {
-    module = "junit:junit",
-    version.ref = "junit"
-}
+junit = { module = "junit:junit", version.ref = "junit" }
 
-androidx-junit = {
-    module = "androidx.test.ext:junit",
-    version.ref = "androidxJunit"
-}
+androidx-junit = { module = "androidx.test.ext:junit", version.ref = "androidxJunit" }
 
-androidx-espresso-core = {
-    module = "androidx.test.espresso:espresso-core",
-    version.ref = "espresso"
-}
+androidx-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso" }
