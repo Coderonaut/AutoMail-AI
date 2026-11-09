@@ -52,7 +52,7 @@ androidx-compose-ui-test-manifest = { module = "androidx.compose.ui:ui-test-mani
 
 # Material 3
 
-androidx-compose-material3 = { module = "androidx.compose.material3" }
+androidx-compose-material3 = { module = "androidx.compose.material3:material3" }
 
 # Navigation
 
