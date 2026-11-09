@@ -10,7 +10,7 @@ android {
 
     namespace = "com.automail"
 
-    compileSdk = 37
+    compileSdk = 36
 
     defaultConfig {
 
