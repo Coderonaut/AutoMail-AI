@@ -14,7 +14,6 @@ __pycache__/
 
 # AutoMail data
 emails.csv
-leads/
 sent/
 
 # Database
