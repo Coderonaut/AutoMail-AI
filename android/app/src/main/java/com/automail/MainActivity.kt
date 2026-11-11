@@ -1,13 +1,12 @@
 package com.automail
 
 import android.os.Bundle
+
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.*
-import androidx.compose.material3.*
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
+
+import com.automail.navigation.AutoMailNavHost
+import com.automail.ui.theme.AutoMailTheme
 
 class MainActivity : ComponentActivity() {
 
@@ -17,41 +16,9 @@ class MainActivity : ComponentActivity() {
 
         setContent {
 
-            MaterialTheme {
+            AutoMailTheme {
 
-                Surface(
-                    modifier = Modifier.fillMaxSize()
-                ) {
-
-                    Column(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .padding(24.dp),
-
-                        horizontalAlignment =
-                            Alignment.CenterHorizontally,
-
-                        verticalArrangement =
-                            Arrangement.Center
-                    ) {
-
-                        Text(
-                            text = "AutoMail AI",
-                            style =
-                                MaterialTheme.typography.headlineLarge
-                        )
-
-                        Spacer(
-                            modifier = Modifier.height(12.dp)
-                        )
-
-                        Text(
-                            text = "Your AI-powered emailing assistant"
-                        )
-
-                    }
-
-                }
+                AutoMailNavHost()
 
             }
 
